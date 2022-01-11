@@ -15,7 +15,7 @@ VARIABLES
 /*
 ==================
 GLOBAL STYLES
-==================
+==================      
 */
 * {
    margin: 0;
@@ -101,9 +101,10 @@ MAIN NAVBAR
    text-transform: capitalize;
    display: block;
    padding: 1rem 0;
-   color: var(--primaryColor);
+   color: var(--mainWhite);
    letter-spacing: var(--mainSpacing);
    transition: var(--mainTransition);
+   font-weight: bolder;
 }
 
 .main-navbar a:hover {
@@ -132,6 +133,7 @@ HERO
    min-height: 100vh;
    background: var(--primaryColor);
    color: var(--mainWhite);
+   /* para alinear */
    display: grid;
    justify-content: center;
    align-items: center;
@@ -141,7 +143,12 @@ HERO
    background: blue;
 }
 
+.hero-banner h1 {
+   text-align: center;
+}
+
 .hero-banner p {
+   margin: 0 auto;
    width: 80%;
    max-width: 560px;
    font-size: 1rem;
@@ -160,6 +167,102 @@ HERO
          url('./images/image-2.jpeg') center/cover fixed no-repeat;
    }
 }
+
+/*
+==================
+CARDS
+==================
+*/
+.title {
+   text-align: center;
+}
+
+.cards {
+   padding: 4rem 0;
+}
+
+.cards-center {
+   width: 80vw;
+   max-width: 1170px;
+   margin: 2rem auto;
+}
+
+.card {
+   border: 1px solid var(--darkGray);
+   margin-bottom: 3rem;
+}
+
+.card-info {
+   padding: 1rem;
+}
+
+.card-footer {
+   background: var(--darkGray);
+   padding: 0.5rem 1rem;
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   justify-items: center;
+}
+
+.card-footer span {
+   color: var(--primaryColor);
+   /* mio pa ajustar el icono dentro del span */
+   display: grid;
+   align-items: center;
+}
+
+/* 2 y 3 cols con mediaquerys
+
+@media screen and (min-width: 768px) {
+   .cards-center {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 2rem;
+   }
+}
+
+@media screen and (min-width: 1170px) {
+   .cards-center {
+      grid-template-columns: repeat(3, 1fr);
+   }
+} */
+
+/* para calcular sin media query
+quiero 3 cols =>
+el maximo ancho del q dispongo - la suma de todos los gaps ( q en este caso son 2 de 2rem ( 32px c/u ) , todo dividido por 3 ( la cantidad de cols q quiero )
+
+( 1170 * .8 - 64 ) / 3 = 368
+
+( 🚨🙀🚨 se le olvido q solo puede ocupar el 80vw , así da 290, ASÍ SI, AL LLEGAR A 1170 TENGO LAS 3 COLS )
+
+para 4 cols al llegar a 1170 ( 32 x 3 , los gaps = 96)
+( 1170 * .8 - 96 ) / 4 = 210
+
+*/
+
+/* 3 cols
+   .cards-center {
+   display: grid;
+   grid-gap: 2rem;
+   grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+} */
+
+/* 4 cols */
+.cards-center {
+   display: grid;
+   grid-gap: 2rem;
+   grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+}
+
+/* PARA CONTROLAR LA ALTURA DE LAS ROWS, XQ NO SIEMPRE ( GENERALMENTE NO ) SE TIENE EL MISMO CONTENIDO EN TODAS LAS CARTAS, XLO Q TENDRIAN DISTINTAS ALTURAS */
+
+.card {
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: auto 1fr auto;
+   /* dentro de c/card hay 3 secciones, la imagen y el footer van a estar con auto y el p va a tomar todo el espacio restante ( en este caso ), tambien se le pueden poner valores fijos a la imagen y footer */
+}
+
 /* 
 
 
